@@ -19,3 +19,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20'
+           # Passo 3: Instalar dependências do projeto
+      - name: Install dependencies
+        run: npm install
+        000
