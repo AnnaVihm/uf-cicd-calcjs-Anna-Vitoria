@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/AnnaVihm/uf-cicd-calcjs-Anna-Vitoria/issues"
   },
-  "homepage": "https://github.com/AnnaVihm/uf-cicd-calcjs-Anna-Vitoria#readme"
+  "homepage": "https://github.com/AnnaVihm/uf-cicd-calcjs-Anna-Vitoria#readme",
+  "devDependencies": {
+    "jest": "^30.1.3"
+  }
 }
