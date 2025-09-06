@@ -2,10 +2,10 @@ name: CI Pipeline
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     branches:
-      - main
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -13,46 +13,47 @@ jobs:
       # Passo 1: Fazer checkout do código
       - name: Check out the repository
         uses: actions/checkout@v3
-
-           # Passo 2: Instalar o Node.js
+        
+      # Passo 2: Instalar o Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
-           # Passo 3: Instalar dependências do projeto
+          node-version: "22"
+
+      # Passo 3: Instalar dependências do projeto
       - name: Install dependencies
         run: npm install
- 
-    # Passo 4: Rodar os testes unitários
+
+      # Passo 4: Rodar os testes unitários
       - name: Run tests
         run: npm test
 
-publish:
+  publish:
     runs-on: ubuntu-latest
     needs: build
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     steps:
       # Passo 1: Fazer checkout do código
       - name: Check out the repository
         uses: actions/checkout@v3
 
-        # Passo 2: Instalar o Node.js
+      # Passo 2: Instalar o Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: "22"
 
-        # Passo 3: Autenticar no NPM
+      # Passo 3: Autenticar no NPM
       - name: Authenticate to npm
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
-        # Passo 4: Publicar no npm, se a versão tiver sido incrementada
+      # Passo 4: Publicar no npm, se a versão tiver sido incrementada
       - name: Publish to npm
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
- # Passo 4: Rodar análise de código com SonarCloud
+        # Passo 4: Rodar análise de código com SonarCloud
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
