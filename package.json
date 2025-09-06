@@ -1,0 +1,19 @@
+{
+  "name": "uf-cicd-calcjs-anna-vitoria",
+  "version": "1.0.0",
+  "description": "projeto calculadora",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnnaVihm/uf-cicd-calcjs-Anna-Vitoria.git"
+  },
+  "author": "Anna Vitória",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AnnaVihm/uf-cicd-calcjs-Anna-Vitoria/issues"
+  },
+  "homepage": "https://github.com/AnnaVihm/uf-cicd-calcjs-Anna-Vitoria#readme"
+}
